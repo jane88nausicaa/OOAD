@@ -15,8 +15,6 @@ public class DBMgr {
 	private Statement stmt=null;
 	private Connection conn=null;
 	
-	//private PreparedStatement pstmt=null;
-	
 	public DBMgr(){
 		getConnection();
 		try {
@@ -34,9 +32,7 @@ public class DBMgr {
 		try { 
 		       
 		       if (conn == null || conn.isClosed()) {
-					Class.forName("com.mysql.jdbc.Driver");
-					//conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/flyway", "root",
-						//	"Lwh*1987");  //(url, user, password)(user is mysql user, not app user) 
+					Class.forName("com.mysql.jdbc.Driver");				
 					conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/flyway", "root",
 										"123789");
 					} 
@@ -160,11 +156,8 @@ public class DBMgr {
 		
 		try {
 			stmt.executeUpdate(sql);
-			//JOptionPane.showMessageDialog(null, "Update operation finished!");
 			return 0;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			//JOptionPane.showMessageDialog(null, "Update operation failed!");
 			e.printStackTrace();
 			return -1;
 		}
